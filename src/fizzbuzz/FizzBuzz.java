@@ -27,9 +27,6 @@ public class FizzBuzz {
      */
     public static void main(String[] args) {
         
-        int firstDivider;
-        int secondDivider;
-        int inputLength;
         String FILENAME = "src\\fizzbuzz\\input.txt";
         String line = null;
 
@@ -44,7 +41,8 @@ public class FizzBuzz {
                 new BufferedReader(fileReader);
 
             while((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
+                // System.out.println(line);
+                fizzBuzz(line);
             }   
 
             // Always close files.
@@ -64,4 +62,18 @@ public class FizzBuzz {
         }
     }
     
+    public static void fizzBuzz(String line) {
+        int firstDivider;
+        int secondDivider;
+        int inputLength;
+        
+        String delims = "[ ]";
+        String[] tokens = line.split(delims);
+        
+        System.out.println("In FizzBuzz");
+        for(int i = 0; i < tokens.length; i++) {
+            System.out.println(tokens[i]);
+        }
+        
+    }
 }
