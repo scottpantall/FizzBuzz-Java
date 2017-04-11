@@ -41,7 +41,6 @@ public class FizzBuzz {
                 new BufferedReader(fileReader);
 
             while((line = bufferedReader.readLine()) != null) {
-                // System.out.println(line);
                 fizzBuzz(line);
             }   
 
@@ -63,17 +62,29 @@ public class FizzBuzz {
     }
     
     public static void fizzBuzz(String line) {
+        // variables
         int firstDivider;
         int secondDivider;
         int inputLength;
         
-        String delims = "[ ]";
-        String[] tokens = line.split(delims);
+        String[] tokens = line.split(" ");
         
-        System.out.println("In FizzBuzz");
-        for(int i = 0; i < tokens.length; i++) {
-            System.out.println(tokens[i]);
+        firstDivider = Integer.parseInt(tokens[0]);
+        secondDivider = Integer.parseInt(tokens[1]);
+        inputLength = Integer.parseInt(tokens[2]);
+        
+        // Output
+        for(int i = 1; i <= inputLength; i++) {
+            if((i % firstDivider == 0) && (i % secondDivider == 0))
+                System.out.print("FB ");
+            else if(i % firstDivider == 0)
+                System.out.print("F ");
+            else if(i % secondDivider == 0)
+                System.out.print("B ");
+            else
+                System.out.print(i + " ");            
         }
+        System.out.printf("%n");
         
     }
 }
