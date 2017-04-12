@@ -25,40 +25,22 @@ public class FizzBuzz {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         
-        String FILENAME = "src\\fizzbuzz\\input.txt";
-        String line = null;
+        File file = new File(args[0]);
 
         // Read file
-        try {
-            // FileReader reads text files in the default encoding.
-            FileReader fileReader = 
-                new FileReader(FILENAME);
+        BufferedReader buffer = new BufferedReader(new FileReader(file));
+        
+        String line;
 
-            // Always wrap FileReader in BufferedReader.
-            BufferedReader bufferedReader = 
-                new BufferedReader(fileReader);
+        while((line = buffer.readLine()) != null) {
+            line = line.trim();
+            fizzBuzz(line);
+        }   
 
-            while((line = bufferedReader.readLine()) != null) {
-                fizzBuzz(line);
-            }   
-
-            // Always close files.
-            bufferedReader.close();         
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println(
-                "Unable to open file '" + 
-                FILENAME + "'");                
-        }
-        catch(IOException ex) {
-            System.out.println(
-                "Error reading file '" 
-                + FILENAME + "'");                  
-            // Or we could just do this: 
-            // ex.printStackTrace();
-        }
+        // Always close files.
+        buffer.close();         
     }
     
     public static void fizzBuzz(String line) {
